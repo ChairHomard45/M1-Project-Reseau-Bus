@@ -1,0 +1,712 @@
+[
+  {
+    "nomLigne": "Nemo 1",
+    "Arrets": [
+      {
+        "id": 28,
+        "nomArret": "Etouvie",
+        "X_coord": "0",
+        "Y_coord": "3.5f"
+      },
+      {
+        "id": 29,
+        "nomArret": "Martinique",
+        "X_coord": "1",
+        "Y_coord": "2.5f"
+      },
+      {
+        "id": 30,
+        "nomArret": "Coll\u00e8ge Rosa Parks",
+        "X_coord": "2",
+        "Y_coord": "2"
+      },
+      {
+        "id": 31,
+        "nomArret": "Languedoc",
+        "X_coord": "4",
+        "Y_coord": "2.5f"
+      },
+      {
+        "id": 32,
+        "nomArret": "Les Coursives",
+        "X_coord": "3.5f",
+        "Y_coord": "3"
+      },
+      {
+        "id": 33,
+        "nomArret": "La Fontaine",
+        "X_coord": "3.5f",
+        "Y_coord": "4.5f"
+      },
+      {
+        "id": 34,
+        "nomArret": "Place La Barre",
+        "X_coord": "4.5f",
+        "Y_coord": "5"
+      },
+      {
+        "id": 35,
+        "nomArret": "Sully",
+        "X_coord": "6.5f",
+        "Y_coord": "6"
+      },
+      {
+        "id": 36,
+        "nomArret": "Espace Alliance",
+        "X_coord": "9",
+        "Y_coord": "7"
+      },
+      {
+        "id": 37,
+        "nomArret": "Faubourg de Hem",
+        "X_coord": "10",
+        "Y_coord": "7.5f"
+      },
+      {
+        "id": 38,
+        "nomArret": "Eglise Saint Firmin",
+        "X_coord": "11.5f",
+        "Y_coord": "8.5f"
+      },
+      {
+        "id": 39,
+        "nomArret": "Zoo d'Amiens",
+        "X_coord": "13",
+        "Y_coord": "9.5f"
+      },
+      {
+        "id": 40,
+        "nomArret": "Jean Jaures",
+        "X_coord": "14.5f",
+        "Y_coord": "11"
+      },
+      {
+        "id": 41,
+        "nomArret": "Saint-Jacques",
+        "X_coord": "15.5f",
+        "Y_coord": "12.5f"
+      },
+      {
+        "id": 42,
+        "nomArret": "Maison de la Culture",
+        "X_coord": "17",
+        "Y_coord": "13.5f"
+      },
+      {
+        "id": 43,
+        "nomArret": "Place du March\u00e9",
+        "X_coord": "17.5f",
+        "Y_coord": "13"
+      },
+      {
+        "id": 44,
+        "nomArret": "Beffroi",
+        "X_coord": "19",
+        "Y_coord": "13"
+      },
+      {
+        "id": 45,
+        "nomArret": "Dusevel",
+        "X_coord": "20",
+        "Y_coord": "14"
+      },
+      {
+        "id": 46,
+        "nomArret": "Palais de Justice",
+        "X_coord": "21",
+        "Y_coord": "15"
+      },
+      {
+        "id": 14,
+        "nomArret": "Gare du Nord",
+        "X_coord": "23.5f",
+        "Y_coord": "17f"
+      },
+      {
+        "id": 48,
+        "nomArret": "Caserne Dejean",
+        "X_coord": "25.5f",
+        "Y_coord": "18"
+      },
+      {
+        "id": 49,
+        "nomArret": "Pinceau",
+        "X_coord": "27",
+        "Y_coord": "19"
+      },
+      {
+        "id": 50,
+        "nomArret": "Lyc\u00e9e de Luzarches",
+        "X_coord": "28f",
+        "Y_coord": "20f"
+      },
+      {
+        "id": 51,
+        "nomArret": "Eglise Saint Acheul",
+        "X_coord": "29",
+        "Y_coord": "21"
+      },
+      {
+        "id": 52,
+        "nomArret": "Mercey",
+        "X_coord": "30.5f",
+        "Y_coord": "22"
+      },
+      {
+        "id": 53,
+        "nomArret": "Sobo",
+        "X_coord": "31.5f",
+        "Y_coord": "22.5f"
+      },
+      {
+        "id": 54,
+        "nomArret": "Pont de l'Avre",
+        "X_coord": "33",
+        "Y_coord": "23.5f"
+      },
+      {
+        "id": 55,
+        "nomArret": "Cit\u00e9 du Ch\u00e2teau",
+        "X_coord": "35",
+        "Y_coord": "24.5f"
+      },
+      {
+        "id": 56,
+        "nomArret": "La Rose Rouge",
+        "X_coord": "35.5f",
+        "Y_coord": "25.5f"
+      },
+      {
+        "id": 57,
+        "nomArret": "Poidevin",
+        "X_coord": "36.5f",
+        "Y_coord": "26"
+      },
+      {
+        "id": 58,
+        "nomArret": "Mairie de Longueau",
+        "X_coord": "37",
+        "Y_coord": "26.5f"
+      },
+      {
+        "id": 59,
+        "nomArret": "La Fournche",
+        "X_coord": "38",
+        "Y_coord": "27"
+      },
+      {
+        "id": 60,
+        "nomArret": "Croix de Fer",
+        "X_coord": "40.5f",
+        "Y_coord": "27.5f"
+      },
+      {
+        "id": 61,
+        "nomArret": "Centre Commercial Glisy",
+        "X_coord": "42",
+        "Y_coord": "29"
+      },
+      {
+        "id": 62,
+        "nomArret": "Capitaine Nemo",
+        "X_coord": "43.5f",
+        "Y_coord": "30"
+      },
+      {
+        "id": 63,
+        "nomArret": "P\u00f4le Jules Verne",
+        "X_coord": "45",
+        "Y_coord": "30.5f"
+      }
+    ]
+  },
+  {
+    "nomLigne": "Nemo 2",
+    "Arrets": [
+      {
+        "id": 64,
+        "nomArret": "La Paix",
+        "X_coord": "19.5f",
+        "Y_coord": "4.5f"
+      },
+      {
+        "id": 65,
+        "nomArret": "Chardin",
+        "X_coord": "21",
+        "Y_coord": "4.5f"
+      },
+      {
+        "id": 66,
+        "nomArret": "Colvert",
+        "X_coord": "24.5f",
+        "Y_coord": "4.5f"
+      },
+      {
+        "id": 67,
+        "nomArret": "Nautilus",
+        "X_coord": "26",
+        "Y_coord": "5"
+      },
+      {
+        "id": 68,
+        "nomArret": "Balzac",
+        "X_coord": "27.5f",
+        "Y_coord": "5"
+      },
+      {
+        "id": 69,
+        "nomArret": "Stendhal",
+        "X_coord": "28",
+        "Y_coord": "6.5f"
+      },
+      {
+        "id": 70,
+        "nomArret": "Centre Saint Victor",
+        "X_coord": "28",
+        "Y_coord": "7.5f"
+      },
+      {
+        "id": 71,
+        "nomArret": "Eloi Morel",
+        "X_coord": "27",
+        "Y_coord": "9"
+      },
+      {
+        "id": 72,
+        "nomArret": "Parc Saint Pierre",
+        "X_coord": "26",
+        "Y_coord": "11"
+      },
+      {
+        "id": 73,
+        "nomArret": "Hortillonnages",
+        "X_coord": "25",
+        "Y_coord": "13"
+      },
+      {
+        "id": 13,
+        "nomArret": "Alsace Lorraine",
+        "X_coord": "24.5f",
+        "Y_coord": "14.5f"
+      },
+      {
+        "id": 14,
+        "nomArret": "Gare du Nord",
+        "X_coord": "23.5f",
+        "Y_coord": "17f"
+      },
+      {
+        "id": 15,
+        "nomArret": "Otages",
+        "X_coord": "21f",
+        "Y_coord": "18f"
+      },
+      {
+        "id": 16,
+        "nomArret": "Cirque Jules Verne",
+        "X_coord": "19",
+        "Y_coord": "18"
+      },
+      {
+        "id": 75,
+        "nomArret": "Nicole Fontaine",
+        "X_coord": "16",
+        "Y_coord": "16.5f"
+      },
+      {
+        "id": 76,
+        "nomArret": "Simone Veil",
+        "X_coord": "14.5f",
+        "Y_coord": "15"
+      },
+      {
+        "id": 77,
+        "nomArret": "Quatre Ch\u00eanes",
+        "X_coord": "12.5f",
+        "Y_coord": "18"
+      },
+      {
+        "id": 78,
+        "nomArret": "Lib\u00e9ration",
+        "X_coord": "11.5f",
+        "Y_coord": "19.5f"
+      },
+      {
+        "id": 79,
+        "nomArret": "Quatre Lemaire",
+        "X_coord": "11.5f",
+        "Y_coord": "20.5f"
+      },
+      {
+        "id": 80,
+        "nomArret": "Ambroise Par\u00e9",
+        "X_coord": "7",
+        "Y_coord": "23"
+      },
+      {
+        "id": 81,
+        "nomArret": "Rotonde",
+        "X_coord": "5.5f",
+        "Y_coord": "23.5f"
+      },
+      {
+        "id": 82,
+        "nomArret": "CHU Amiens Picardie",
+        "X_coord": "3.5f",
+        "Y_coord": "24"
+      },
+      {
+        "id": 83,
+        "nomArret": "La\u00ebnnec",
+        "X_coord": "3.5f",
+        "Y_coord": "26"
+      },
+      {
+        "id": 84,
+        "nomArret": "R\u00e9sidence du Thil",
+        "X_coord": "5",
+        "Y_coord": "26"
+      },
+      {
+        "id": 85,
+        "nomArret": "IUT",
+        "X_coord": "7",
+        "Y_coord": "26.5f"
+      }
+    ]
+  },
+  {
+    "nomLigne": "Nemo 3",
+    "Arrets": [
+      {
+        "id": 1,
+        "nomArret": "Promenade",
+        "X_coord": "24",
+        "Y_coord": "0"
+      },
+      {
+        "id": 2,
+        "nomArret": "Centre commercial Nord",
+        "X_coord": "22.5f",
+        "Y_coord": "1"
+      },
+      {
+        "id": 3,
+        "nomArret": "Romain Rolland",
+        "X_coord": "22",
+        "Y_coord": "2.5f"
+      },
+      {
+        "id": 4,
+        "nomArret": "Espace sant\u00e9",
+        "X_coord": "22",
+        "Y_coord": "3.5f"
+      },
+      {
+        "id": 5,
+        "nomArret": "P\u00f4le d'\u00e9changes Nord",
+        "X_coord": "22",
+        "Y_coord": "4.5f"
+      },
+      {
+        "id": 6,
+        "nomArret": "Berlioz",
+        "X_coord": "22",
+        "Y_coord": "5.5f"
+      },
+      {
+        "id": 7,
+        "nomArret": "Cl\u00e9menceau",
+        "X_coord": "21.5",
+        "Y_coord": "6.5f"
+      },
+      {
+        "id": 8,
+        "nomArret": "Citadelle Fran\u00e7ois 1er",
+        "X_coord": "21",
+        "Y_coord": "8f"
+      },
+      {
+        "id": 9,
+        "nomArret": "Citadelle Monstrescu",
+        "X_coord": "20.5f",
+        "Y_coord": "9f"
+      },
+      {
+        "id": 10,
+        "nomArret": "Vogel",
+        "X_coord": "18.5f",
+        "Y_coord": "11.5f"
+      },
+      {
+        "id": 11,
+        "nomArret": "Saint Leu",
+        "X_coord": "20.5f",
+        "Y_coord": "12f"
+      },
+      {
+        "id": 12,
+        "nomArret": "Place de Don",
+        "X_coord": "22",
+        "Y_coord": "13f"
+      },
+      {
+        "id": 13,
+        "nomArret": "Alsace Lorraine",
+        "X_coord": "24.5f",
+        "Y_coord": "14.5f"
+      },
+      {
+        "id": 14,
+        "nomArret": "Gare du Nord",
+        "X_coord": "23.5f",
+        "Y_coord": "17f"
+      },
+      {
+        "id": 15,
+        "nomArret": "Otages",
+        "X_coord": "21f",
+        "Y_coord": "18f"
+      },
+      {
+        "id": 16,
+        "nomArret": "Cirque Jules Verne",
+        "X_coord": "19",
+        "Y_coord": "18"
+      },
+      {
+        "id": 17,
+        "nomArret": "Coll\u00e8ge Saint Martin",
+        "X_coord": "18",
+        "Y_coord": "20.5f"
+      },
+      {
+        "id": 18,
+        "nomArret": "Delpech",
+        "X_coord": "17",
+        "Y_coord": "22"
+      },
+      {
+        "id": 19,
+        "nomArret": "Cit\u00e9 - Providence",
+        "X_coord": "19f",
+        "Y_coord": "23f"
+      },
+      {
+        "id": 20,
+        "nomArret": "Charassin",
+        "X_coord": "20.5f",
+        "Y_coord": "24.5f"
+      },
+      {
+        "id": 21,
+        "nomArret": "Aquap\u00f4le",
+        "X_coord": "20",
+        "Y_coord": "26"
+      },
+      {
+        "id": 22,
+        "nomArret": "P\u00f4le des cliniques",
+        "X_coord": "19f",
+        "Y_coord": "25.5f"
+      },
+      {
+        "id": 23,
+        "nomArret": "Georges Beauvais",
+        "X_coord": "15.5f",
+        "Y_coord": "25"
+      },
+      {
+        "id": 24,
+        "nomArret": "Espagne",
+        "X_coord": "13.5f",
+        "Y_coord": "26"
+      },
+      {
+        "id": 25,
+        "nomArret": "Gr\u00e8ce",
+        "X_coord": "12.5f",
+        "Y_coord": "27"
+      },
+      {
+        "id": 26,
+        "nomArret": "IME",
+        "X_coord": "10.5f",
+        "Y_coord": "29"
+      },
+      {
+        "id": 27,
+        "nomArret": "Centre Commercial Sud",
+        "X_coord": "10",
+        "Y_coord": "30.5f"
+      }
+    ]
+  },
+  {
+    "nomLigne": "Nemo 4",
+    "Arrets": [
+      {
+        "id": 86,
+        "nomArret": "P\u00f4le Licorne",
+        "X_coord": "7.5f",
+        "Y_coord": "11"
+      },
+      {
+        "id": 87,
+        "nomArret": "Hyppodrome",
+        "X_coord": "9.5f",
+        "Y_coord": "12"
+      },
+      {
+        "id": 88,
+        "nomArret": "Colbert",
+        "X_coord": "11.5f",
+        "Y_coord": "14"
+      },
+      {
+        "id": 89,
+        "nomArret": "Lucien Fournier",
+        "X_coord": "12.5f",
+        "Y_coord": "14"
+      },
+      {
+        "id": 76,
+        "nomArret": "Simone Veil",
+        "X_coord": "14.5f",
+        "Y_coord": "15"
+      },
+      {
+        "id": 75,
+        "nomArret": "Nicole Fontaine",
+        "X_coord": "16",
+        "Y_coord": "16.5f"
+      },
+      {
+        "id": 90,
+        "nomArret": "Hôtel de Ville",
+        "X_coord": "17.5f",
+        "Y_coord": "15"
+      },
+      {
+        "id": 91,
+        "nomArret": "Jacobins",
+        "X_coord": "19.5f",
+        "Y_coord": "15.5f"
+      },
+      {
+        "id": 92,
+        "nomArret": "Emile Zola",
+        "X_coord": "21",
+        "Y_coord": "16.5f"
+      },
+      {
+        "id": 14,
+        "nomArret": "Gare du Nord",
+        "X_coord": "23.5f",
+        "Y_coord": "17f"
+      },
+      {
+        "id": 48,
+        "nomArret": "Caserne Dejean",
+        "X_coord": "25.5f",
+        "Y_coord": "18"
+      },
+      {
+        "id": 49,
+        "nomArret": "Pinceau",
+        "X_coord": "27",
+        "Y_coord": "19"
+      },
+      {
+        "id": 50,
+        "nomArret": "Lyc\u00e9e de Luzarches",
+        "X_coord": "28f",
+        "Y_coord": "20f"
+      },
+      {
+        "id": 93,
+        "nomArret": "Mons",
+        "X_coord": "27.5f",
+        "Y_coord": "21.5f"
+      },
+      {
+        "id": 94,
+        "nomArret": "3ième DI",
+        "X_coord": "26",
+        "Y_coord": "22"
+      },
+      {
+        "id": 95,
+        "nomArret": "Hôtel des Impôts",
+        "X_coord": "25.5f",
+        "Y_coord": "23"
+      },
+      {
+        "id": 96,
+        "nomArret": "Rollin",
+        "X_coord": "26",
+        "Y_coord": "24"
+      },
+      {
+        "id": 97,
+        "nomArret": "Ormale",
+        "X_coord": "27.5f",
+        "Y_coord": "24.5f"
+      },
+      {
+        "id": 98,
+        "nomArret": "Görlitz",
+        "X_coord": "28",
+        "Y_coord": "26"
+      },
+      {
+        "id": 99,
+        "nomArret": "Frédéric Mistral",
+        "X_coord": "28.5f",
+        "Y_coord": "27"
+      },
+      {
+        "id": 100,
+        "nomArret": "Collège Guy Mareschal",
+        "X_coord": "29.5f",
+        "Y_coord": "27"
+      },
+      {
+        "id": 101,
+        "nomArret": "IREAM",
+        "X_coord": "31",
+        "Y_coord": "26.5f"
+      },
+      {
+        "id": 102,
+        "nomArret": "Bel Air",
+        "X_coord": "31.5f",
+        "Y_coord": "28"
+      },
+      {
+        "id": 103,
+        "nomArret": "Wasse",
+        "X_coord": "32",
+        "Y_coord": "29"
+      },
+      {
+        "id": 104,
+        "nomArret": "Place de Cagny",
+        "X_coord": "33",
+        "Y_coord": "30.5f"
+      },
+      {
+        "id": 105,
+        "nomArret": "Latapie",
+        "X_coord": "33.5f",
+        "Y_coord": "29.5f"
+      },
+      {
+        "id": 106,
+        "nomArret": "Longueau SNCF",
+        "X_coord": "36",
+        "Y_coord": "29.5f"
+      }
+    ]
+  }
+]

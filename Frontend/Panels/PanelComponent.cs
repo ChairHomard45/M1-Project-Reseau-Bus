@@ -1,31 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Frontend.Observer;
 
 namespace Frontend.Panels
 {
-    public abstract class PanelComponent : Panel
+  public abstract class PanelComponent : Panel, ISimulationPanel
+  {
+    public virtual void OnCompleted()
     {
-
-
-        public void OnCompleted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnError(Exception error)
-        {
-            Console.WriteLine("Erreur : ", error.Message);
-        }
-
-        public void OnNext(SimulationNotification value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Show() => this.Visible = true;
-        public void Hide() => this.Visible = false;
     }
+
+    public virtual void OnError(Exception error)
+    {
+      Console.WriteLine("Erreur : " + error.Message);
+    }
+
+    public abstract void OnNext(SimulationNotification value);
+
+    public void ShowPanel() => this.Visible = true;
+    public void HidePanel() => this.Visible = false;
+  }
 }
