@@ -4,6 +4,8 @@ using Backend.Dynamique.Observer;
 using Backend.Utils;
 using Frontend.Observer;
 
+using Frontend.Observer;
+
 namespace Backend.Dynamique;
 
 public class Simulation : IObserver<SimulationNotification>, IObservable<SimulationNotification>,

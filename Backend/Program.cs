@@ -54,44 +54,33 @@ class Program
   }
 
 
-    private static void RunSimulation()
+  private static void RunSimulation()
+  {
+    if (BusNetwork.Instance.GetLineCount() == 0)
     {
-        if (BusNetwork.Instance.GetLineCount() == 0)
-        {
-            Console.WriteLine("No lines loaded.");
-            return;
-        }
-
-        var startTime = TimeSpan.FromHours(6);
-        var endTime = TimeSpan.FromHours(20);
-        var initialStrategy = new MinutesStrategy();
-        var simulation = new Simulation("Simulation Multi-Lignes", startTime, endTime, initialStrategy, tickIntervalMs: 300);
-
-        var loader = new BusCreationLoader();
-
-        // Sélectionner une ligne pour la démonstration
-        var ligneSelectionner = BusNetwork.Instance.GetLineByIndex(1);
-
-        // Créer 2 bus dans la direction "avant"
-        var busesForward = loader.CreateBusesFromLineSchedule(ligneSelectionner, direction: true, numberOfBuses: 1, prefix: "FORWARD");
-
-        var busesBackward = loader.CreateBusesFromLineSchedule(ligneSelectionner, direction: false, numberOfBuses:1, prefix: "BACKWARD");
-
-        loader.AddBusesToSimulation(simulation, busesForward);
-
-        loader.AddBusesToSimulation(simulation, busesBackward);
-      
-
-        SimulationManager.Instance.RegisterSimulation(simulation);
-        simulation.Start();
-
-        while (simulation.CurrentTime < simulation.EndTime)
-        {
-            Console.WriteLine($"Time: {simulation.CurrentTime:hh\\:mm\\:ss}");
-            Thread.Sleep(300);
-        }
-
-        Console.WriteLine("✅ Simulation complete.");
+      Console.WriteLine("No lines loaded.");
+      return;
     }
+
+    var line1 = BusNetwork.Instance.GetLineByIndex(0);
+    var startTime = TimeSpan.FromHours(6);
+    var endTime = TimeSpan.FromHours(20);
+    var initialStrategy = new MinutesStrategy();
+
+    var loader = new BusCreationLoader();
+
+
+    loader.AddBusesToSimulation(simulation, busesForward);
+
+    SimulationManager.Instance.RegisterSimulation(simulation);
+    simulation.Start();
+
+    while (simulation.CurrentTime < simulation.EndTime)
+    {
+      Console.WriteLine($"Time: {simulation.CurrentTime:hh\\:mm\\:ss}");
+    }
+
+    Console.WriteLine("✅ Simulation complete.");
+  }
 
 }
