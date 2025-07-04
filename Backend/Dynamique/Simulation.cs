@@ -1,187 +1,140 @@
-using Backend.Dynamique.ObserverObservablePattern;
-using Backend.Statique;
+using Backend.Dynamique.Clock;
+using Backend.Dynamique.Entities;
+using Backend.Dynamique.Observer;
+using Backend.Utils;
+
+using Frontend.Observer;
 
 namespace Backend.Dynamique;
 
-public class Simulation : IObserver<NotificationChrono>
+public class Simulation : IObserver<SimulationNotification>, IObservable<SimulationNotification>,
+    IObserver<BusTimerNotification>, IObservable<SimulationFrontNotification>
 {
-  private readonly ReseauBus _reseauBus;
-  private readonly List<Bus> _busEnCirculation;
-  private readonly Chrono _chronoSimu;
-  private readonly TimeSpan _debutSimulation;
-  private readonly TimeSpan _finSimulation;
-  private readonly string _nomSimulation;
+    public string Name { get; }
+    public TimeSpan StartTime { get; }
+    public TimeSpan EndTime { get; }
+    public TimeSpan CurrentTime => _currentTime;
 
-  private readonly Dictionary<NotificationChronoType, Action<NotificationChrono>> _handlers;
-  
-  public Simulation(string nomSimulation, TimeSpan debutSimulation, TimeSpan finSimulation)
-  {
-    _nomSimulation = nomSimulation;
-    _debutSimulation = debutSimulation;
-    _finSimulation = finSimulation;
+    private readonly List<BusTimer> _busTimers = new();
+    private readonly SimulationClock _clock;
+    private TimeSpan _currentTime;
 
-    _reseauBus = ReseauBus.Instance;
+    private IDisposable? _clockSubscription;
+    private readonly List<IObserver<SimulationNotification>> _observers = new();
+    private readonly object _lock = new();
 
-    _chronoSimu = new Chrono();
-    _chronoSimu.Subscribe(this);
-    this.Subscribe(_chronoSimu);
+    private ITimeUnitStrategy _timeUnitStrategy;
 
-    _busEnCirculation = new List<Bus>();
-
-    InitializeBus();
-
-    _handlers = new Dictionary<NotificationChronoType, Action<NotificationChrono>>
+    public Simulation(string name, TimeSpan startTime, TimeSpan endTime, ITimeUnitStrategy initialStrategy,
+        int tickIntervalMs = 1000)
     {
-      { NotificationChronoType.StartChrono, HandleStartChrono },
-      { NotificationChronoType.StopChrono, HandleStopChrono },
-      { NotificationChronoType.DureeChrono, HandleDureeChrono }
-    };
-  }
+        Name = name;
+        StartTime = startTime;
+        EndTime = endTime;
+        _currentTime = startTime;
 
+        _timeUnitStrategy = initialStrategy;
+        _clock = new SimulationClock(startTime, tickIntervalMs, _timeUnitStrategy);
 
-// ******************************************************************************************************
-// ***                                                                                                ***
-// ***                                 Implementation Observable for Chrono                           ***
-// ***                                                                                                ***
-// ******************************************************************************************************
+        _clockSubscription = _clock.Subscribe(this);
 
-  private readonly HashSet<NotificationChrono> _notificationsChrono = new();
-  private readonly HashSet<IObserver<NotificationChrono>> _observateursChrono = new();
-
-  public virtual void Subscribe(Chrono provider)
-  {
-    _cancellation = provider.Subscribe(this);
-  }
-
-  public virtual void Unsubscribe()
-  {
-    _cancellation?.Dispose();
-  }
-
-  public IDisposable Subscribe(IObserver<NotificationChrono> observateur)
-  {
-    // Si l'obervateur n'est pas encore dans la liste, on l'ajoute
-    if (_observateursChrono.Add(observateur))
-      // On lui envoie les notifications
-      foreach (var notification in _notificationsChrono)
-        observateur.OnNext(notification);
-
-    return new Unsubscriber<NotificationChrono>(_observateursChrono, observateur);
-  }
-
-  private NotificationChrono CreateNotificationChrono(NotificationChronoType type, String? typeChrono, TimeSpan? dureeChrono)
-  {
-    return new NotificationChrono(type, typeChrono, dureeChrono);
-  }
-
-  private void NotifyChrono(NotificationChrono value)
-  {
-    _notificationsChrono.Add(value);
-    foreach (IObserver<NotificationChrono> observer in _observateursChrono) observer.OnNext(value);
-  }
-
-// ******************************************************************************************************
-// ***                                                                                                ***
-// ***                                 Implementation Observer for Chrono                             ***
-// ***                                                                                                ***
-// ******************************************************************************************************
-
-  private IDisposable? _cancellation;
-
-  public void OnCompleted()
-  {
-    Console.WriteLine("Simulation : " + _nomSimulation + " terminer.");
-  }
-
-  public void OnError(Exception error)
-  {
-    Console.WriteLine("Simulation : " + _nomSimulation + " a rencontrer l'erreur suivante - " + error.Message);
-  }
-
-  public void OnNext(NotificationChrono value)
-  {
-    if (_handlers.TryGetValue(value.GetTypeNotification(), out var handler))
-    {
-      handler(value);
-    }
-    else
-    {
-      Console.WriteLine("Unknown notification type.");
+        this.Subscribe(_clock);
     }
 
-  }
-
-  private void HandleStartChrono(NotificationChrono notification)
-  {
-    Console.WriteLine("Start Chrono: " + (notification.GetDureeRestante()?.ToString() ?? "No duration"));
-  }
-
-  private void HandleStopChrono(NotificationChrono notification)
-  {
-    Console.WriteLine("Stop Chrono: " + (notification.GetDureeRestante()?.ToString() ?? "No duration"));
-  }
-  
-  private void HandleDureeChrono(NotificationChrono notification)
-  {
-    Console.WriteLine("Duree Chrono: " + (notification.GetDureeRestante()?.ToString() ?? "No duration"));
-  }
-  
-// ******************************************************************************************************
-// ***                                                                                                ***
-// ***                                      Getter & Setter                                           ***
-// ***                                                                                                ***
-// ******************************************************************************************************
-
-  public TimeSpan GetDebutTime()
-  {
-    return _debutSimulation;
-  }
-
-  public TimeSpan GetFinTime()
-  {
-    return _finSimulation;
-  }
-
-  public Chrono GetChrono()
-  {
-    return _chronoSimu;
-  }
-  
-  public IReadOnlyList<Bus> GetBusEnCirculation() => _busEnCirculation.AsReadOnly();
-
-// ******************************************************************************************************
-// ***                                                                                                ***
-// ***                                      Private Functions                                         ***
-// ***                                                                                                ***
-// ******************************************************************************************************
-
-  private void InitializeBus()
-  {
-    for (var i = 0; i < 2; i++)
+    public void AddBus(Bus bus)
     {
-      /* Initialisation des données pour chaque bus */
-      var randomLignes = _reseauBus.GetRandomLigne();
-
-      var randomSens = new Random().Next(2) == 0 ? 1 : -1;
-      
-      if (!randomLignes.GetElementLigne().Any()) return;
-      
-      var deArret = randomSens == 1
-        ? randomLignes.GetElementLigne().First()
-        : randomLignes.GetElementLigne().Last();
-      var versArret = randomSens == 1
-        ? randomLignes.GetElementLigne().Last()
-        : randomLignes.GetElementLigne().First();
-      var newBus = new Bus(
-        "0" + i,
-        randomLignes,
-        randomSens,
-        deArret,
-        versArret,
-        randomLignes.GetElementLigneRandom()
-      );
-
-      _busEnCirculation.Add(newBus);
+        var timer = new BusTimer(bus, _timeUnitStrategy);
+        _busTimers.Add(timer);
+        timer.Subscribe(bus);
+        _clock.Subscribe(timer);
     }
-  }
+
+    public IDisposable Subscribe(IObserver<SimulationNotification> observer)
+    {
+        lock (_lock)
+        {
+            if (!_observers.Contains(observer))
+                _observers.Add(observer);
+        }
+
+        return new Unsubscriber<SimulationNotification>(_observers, observer);
+    }
+
+    private void NotifyObservers(SimulationNotification notification)
+    {
+        List<IObserver<SimulationNotification>> observersCopy;
+        lock (_lock)
+        {
+            observersCopy = new List<IObserver<SimulationNotification>>(_observers);
+        }
+
+        foreach (var obs in observersCopy)
+        {
+            obs.OnNext(notification);
+        }
+    }
+
+    public void Start()
+    {
+        NotifyObservers(new SimulationNotification(SimulationNotification.NotificationType.Start));
+    }
+
+    public void Stop()
+    {
+        NotifyObservers(new SimulationNotification(SimulationNotification.NotificationType.Stop));
+        _clockSubscription?.Dispose();
+        _clockSubscription = null;
+    }
+
+    public void ChangeTimeUnit(ITimeUnitStrategy newStrategy)
+    {
+        _timeUnitStrategy = newStrategy;
+        _clock.UpdateStrategy(newStrategy);
+        Console.WriteLine($"[SIMULATION] Time unit switched to: {newStrategy.GetType().Name}");
+    }
+
+    public void OnNext(SimulationNotification notification)
+    {
+        switch (notification.Type)
+        {
+            case SimulationNotification.NotificationType.Start:
+                Console.WriteLine("[SIMULATION] Simulation commencer.");
+                break;
+
+            case SimulationNotification.NotificationType.Stop:
+                Console.WriteLine("[SIMULATION] Simulation arreter.");
+                break;
+
+            case SimulationNotification.NotificationType.CurrentTime:
+                if (notification.CurrentTime.HasValue)
+                {
+                    _currentTime = notification.CurrentTime.Value;
+                    if (_currentTime >= EndTime)
+                    {
+                        Console.WriteLine("[SIMULATION] Atteint la fin de la simulation.");
+                        Stop();
+                    }
+                }
+
+                break;
+        }
+    }
+
+    public void OnError(Exception error) => Console.WriteLine($"[SIMULATION] Clock error: {error.Message}");
+
+    public void OnNext(BusTimerNotification value)
+    {
+        Console.WriteLine($"[SIMULATION] Bus {value.Bus.GetImmatriculation()} - {value.Type}");
+
+        switch (value.Type)
+        {
+            case BusTimerNotification.NotificationType.MoveNext:
+            case BusTimerNotification.NotificationType.ChangeStateToStop:
+            case BusTimerNotification.NotificationType.ChangeStateToCirculation:
+                value.Bus.OnNext(value);
+                break;
+        }
+    }
+
+    public void OnCompleted() => Console.WriteLine("[SIMULATION] Clock Compléter.");
 }

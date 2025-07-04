@@ -2,7 +2,7 @@
 
 namespace Frontend.Panels
 {
-  public abstract class PanelComponent : Panel, ISimulationPanel
+  public abstract class PanelComponent : Panel, IObserver<SimulationFrontNotification>
   {
     public virtual void OnCompleted()
     {
@@ -13,7 +13,7 @@ namespace Frontend.Panels
       Console.WriteLine("Erreur : " + error.Message);
     }
 
-    public abstract void OnNext(SimulationNotification value);
+    public abstract void OnNext(SimulationFrontNotification value);
 
     public void ShowPanel() => this.Visible = true;
     public void HidePanel() => this.Visible = false;

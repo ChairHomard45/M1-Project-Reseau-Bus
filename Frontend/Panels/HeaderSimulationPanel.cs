@@ -21,13 +21,13 @@ namespace Frontend.Panels
       Controls.Add(labelSimulationName);
     }
 
-    public override void OnNext(SimulationNotification notification)
+    public override void OnNext(SimulationFrontNotification frontNotification)
     {
-      if (notification.Type == SimulationNotification.NotificationType.CurrentTimeUpdate)
+      if (frontNotification.Type == SimulationFrontNotification.NotificationType.CurrentTimeUpdate)
       {
-        labelCurrentTime.Text = $"Current Time: {notification.CurrentTime?.ToString() ?? "--"}";
-        labelEndTime.Text = $"End Time: {notification.EndTime?.ToString() ?? "--"}";
-        labelSimulationName.Text = $"Simulation: {notification.SimulationName}";
+        labelCurrentTime.Text = $"Current Time: {frontNotification.CurrentTime?.ToString() ?? "--"}";
+        labelEndTime.Text = $"End Time: {frontNotification.EndTime?.ToString() ?? "--"}";
+        labelSimulationName.Text = $"Simulation: {frontNotification.SimulationName}";
       }
     }
   }

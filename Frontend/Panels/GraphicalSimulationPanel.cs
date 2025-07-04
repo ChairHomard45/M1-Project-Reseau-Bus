@@ -9,7 +9,7 @@ namespace Frontend.Panels
 {
     public partial class GraphicalSimulationPanel : PanelComponent
     {
-        public override void OnNext(SimulationNotification value)
+        public override void OnNext(SimulationFrontNotification value)
         {
             throw new NotImplementedException();
         }
